@@ -11,19 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nhập số tiền"
+        android:textSize="30sp"
         android:inputType="numberDecimal"/>
 
     <TextView
         android:id="@+id/tvTransactionNote"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="415dp"
+        android:layout_height="38dp"
         android:layout_marginTop="8dp"
+        android:textSize="15sp"
         android:text="Chọn ngân hàng để thực hiện giao dịch" />
 
     <Spinner
         android:id="@+id/spBank"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"/>
+        android:layout_width="416dp"
+        android:layout_height="49dp"
+        android:textSize="30sp"
+        android:layout_marginTop="8dp" />
 
 </LinearLayout>

@@ -4,12 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.qlchitieu.R
@@ -30,6 +25,7 @@ class BudgetFragment : Fragment(R.layout.fragment_budget) {
         val btnDeposit: Button = view.findViewById(R.id.btnDeposit)
         val btnWithdraw: Button = view.findViewById(R.id.btnWithdraw)
         val btnTransactionHistory: Button = view.findViewById(R.id.btnTransactionHistory)
+        val btnNotifications: Button = view.findViewById(R.id.btnNotifications)
 
         // Khởi tạo Firebase Database reference
         databaseRef = FirebaseDatabase.getInstance().getReference("account_balance")
@@ -47,6 +43,10 @@ class BudgetFragment : Fragment(R.layout.fragment_budget) {
 
         btnTransactionHistory.setOnClickListener {
             showTransactionHistory()
+        }
+
+        btnNotifications.setOnClickListener {
+            showNotifications()
         }
     }
 
@@ -96,6 +96,11 @@ class BudgetFragment : Fragment(R.layout.fragment_budget) {
             .addOnSuccessListener {
                 tvAccountBalance.text = "Số dư hiện tại: $accountBalance đồng"
                 saveTransactionToHistory(action, amount)
+
+                // Lưu thông báo vào Firebase
+                val notificationRef = FirebaseDatabase.getInstance().getReference("notifications")
+                val message = "$action thành công: $amount đồng"
+                notificationRef.push().setValue(message)
             }
             .addOnFailureListener {
                 Toast.makeText(requireContext(), "Giao dịch thất bại!", Toast.LENGTH_SHORT).show()
@@ -135,4 +140,21 @@ class BudgetFragment : Fragment(R.layout.fragment_budget) {
         }
     }
 
+    private fun showNotifications() {
+        val notificationRef = FirebaseDatabase.getInstance().getReference("notifications")
+
+        notificationRef.get().addOnSuccessListener { snapshot ->
+            val notifications = snapshot.children.mapNotNull { it.getValue(String::class.java) }
+
+            val message = notifications.joinToString("\n") { it }
+
+            AlertDialog.Builder(requireContext())
+                .setTitle("Thông báo giao dịch")
+                .setMessage(if (message.isEmpty()) "Không có thông báo nào." else message)
+                .setPositiveButton("Đóng", null)
+                .show()
+        }.addOnFailureListener {
+            Toast.makeText(requireContext(), "Không thể tải thông báo.", Toast.LENGTH_SHORT).show()
+        }
+    }
 }

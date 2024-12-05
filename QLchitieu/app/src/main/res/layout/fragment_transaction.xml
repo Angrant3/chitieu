@@ -13,63 +13,67 @@
         android:id="@+id/amountEditText"
         android:layout_width="382dp"
         android:layout_height="69dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="88dp"
         android:hint="Số tiền"
         android:inputType="numberDecimal"
         android:padding="16dp"
         android:textColor="#DAE2E2"
+        android:textColorHint="#CEE4E4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/transactionTypeSpinner"
-        android:layout_width="382dp"
-        android:layout_height="69dp"
-        app:layout_constraintHorizontal_bias="0.551"
-        android:layout_marginTop="12dp"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/amountEditText" />
-
-    <!-- EditText cho mô tả -->
-    <EditText
-        android:id="@+id/descriptionEditText"
-        android:layout_width="382dp"
-        android:layout_height="69dp"
-        app:layout_constraintHorizontal_bias="0.551"
-        android:layout_marginTop="8dp"
-        android:hint="Mô tả"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="#DAE2E2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/transactionTypeSpinner" />
-
-    <!-- Button để thêm giao dịch -->
     <Button
         android:id="@+id/addTransactionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#BA3443"
         android:padding="16dp"
         android:text="Thêm giao dịch"
-        android:backgroundTint="#BA3443"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionEditText" />
-
-    <!-- RecyclerView hiển thị danh sách giao dịch -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/transactionsRecyclerView"
-        android:layout_width="440dp"
-        android:layout_height="400dp"
-        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addTransactionButton" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/descriptionEditText"
+        android:layout_width="382dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="4dp"
+        android:hint="Mô tả"
+        android:padding="16dp"
+        android:textColor="#DAE2E2"
+        android:textColorHint="#CEE4E4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/transactionTypeSpinner" />
+
+    <Spinner
+        android:id="@+id/transactionTypeSpinner"
+        android:layout_width="382dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/amountEditText" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/transactionsRecyclerView"
+        android:layout_width="437dp"
+        android:layout_height="370dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
