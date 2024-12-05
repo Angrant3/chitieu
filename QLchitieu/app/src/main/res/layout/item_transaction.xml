@@ -8,11 +8,6 @@
     android:background="@drawable/bg3"
     android:padding="16dp">
 
-    <!-- Số tiền -->
-
-    <!-- Loại giao dịch -->
-
-    <!-- Thời gian giao dịch -->
 
     <TextView
         android:id="@+id/amountTextView"
@@ -20,7 +15,7 @@
         android:layout_height="39dp"
         android:layout_marginTop="8dp"
         android:text="₫1,000,000"
-        android:textColor="#2279D1"
+        android:textColor="#0899FF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

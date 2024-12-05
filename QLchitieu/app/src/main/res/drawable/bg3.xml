@@ -43,7 +43,7 @@
             </aapt:attr>
         </path>
         <path
-            android:strokeColor="#FFE6120A"
+            android:strokeColor="#2196F3"
             android:strokeWidth="3"
             android:pathData="M459 26.5H45c-11.87 0-21.5 9.63-21.5 21.5v121c0 11.87 9.63 21.5 21.5 21.5h414c11.87 0 21.5-9.63 21.5-21.5V48c0-11.87-9.63-21.5-21.5-21.5Z"/>
     </group>
